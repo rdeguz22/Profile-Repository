@@ -111,7 +111,7 @@ def main():
             print(goal if goal else "Goal not found.")
 
         elif choice == "0":
-            print("Goodbye! 👋")
+            print("Goodbye.")
             break
 
         else:

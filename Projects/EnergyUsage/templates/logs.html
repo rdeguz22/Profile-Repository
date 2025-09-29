@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Energy Logs{% endblock %}
+
+{% block content %}
+<h1>Energy Logs</h1>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Energy (kWh)</th>
+        <th>Cost ($)</th>
+    </tr>
+    {% for log in logs %}
+    <tr>
+        <td>{{ log.log_date }}</td>
+        <td>{{ log.energy_consumed }}</td>
+        <td>{{ log.cost }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Add New Log</h2>
+<form method="POST" action="/logs">
+    <div class="form-group">
+        <label for="log_date">Date:</label>
+        <input type="date" name="log_date" required>
+    </div>
+    <div class="form-group">
+        <label for="energy_consumed">Energy (kWh):</label>
+        <input type="number" step="0.01" name="energy_consumed" required>
+    </div>
+    <div class="form-group">
+        <label for="cost">Cost ($):</label>
+        <input type="number" step="0.01" name="cost">
+    </div>
+    <button type="submit" class="btn">Add Log</button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ username }}!</h1>
+<p>Here’s a quick summary of your energy usage:</p>
+
+<ul>
+    <li>Total Logs: {{ total_logs }}</li>
+    <li>Total Energy Consumed: {{ total_energy }} kWh</li>
+    <li>Estimated Cost: ${{ total_cost }}</li>
+</ul>
+
+{% if goals %}
+<h2>Your Goals</h2>
+<ul>
+{% for goal in goals %}
+    <li>{{ goal.exercise_name }} → {{ goal.target_energy }} kWh by {{ goal.deadline }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No goals set yet. <a href="/goals">Set one now</a>.</p>
+{% endif %}
+{% endblock %}

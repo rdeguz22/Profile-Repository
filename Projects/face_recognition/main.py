@@ -32,8 +32,3 @@ class Main:
 
         capture.release()
         cv2.destroyAllWindows()
-
-
-if __name__ == "__main__":
-    app = Main(images_path="images/")
-    app.run()

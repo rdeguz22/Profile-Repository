@@ -1,1 +1,1 @@
-Personal Projects in Progress
+This contains my personal projects outside of school.

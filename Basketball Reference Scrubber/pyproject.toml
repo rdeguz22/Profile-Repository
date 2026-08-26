@@ -1,0 +1,24 @@
+[project]
+name = "bbref-scrubber"
+version = "0.1.0"
+description = "Natural-language foundation layer over NBA Stats API data — the data layer every other basketball tool in this repo builds on."
+requires-python = ">=3.10"
+dependencies = [
+    "nba_api>=1.4",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+scrubber = "scrubber.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

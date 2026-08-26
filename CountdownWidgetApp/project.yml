@@ -1,0 +1,72 @@
+name: CountdownWidgetApp
+options:
+  bundleIdPrefix: com.rdeguzman
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+
+targets:
+  CountdownWidgetApp:
+    type: application
+    platform: iOS
+    sources:
+      - Shared
+      - CountdownWidgetApp
+    info:
+      path: CountdownWidgetApp/Info.plist
+      properties:
+        CFBundleDisplayName: Countdown
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
+    entitlements:
+      path: CountdownWidgetApp/CountdownWidgetApp.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.rdeguzman.countdownwidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.rdeguzman.countdownwidget
+        PRODUCT_NAME: Countdown
+    dependencies:
+      - target: CountdownWidgetExtension
+        embed: true
+
+  CountdownWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Shared
+      - CountdownWidget
+    info:
+      path: CountdownWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Countdown Widget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: CountdownWidget/CountdownWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.rdeguzman.countdownwidget
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.rdeguzman.countdownwidget.widget
+        PRODUCT_NAME: CountdownWidget
+        SKIP_INSTALL: false
+
+schemes:
+  CountdownWidgetApp:
+    build:
+      targets:
+        CountdownWidgetApp: all
+    run:
+      config: Debug
+    archive:
+      config: Release

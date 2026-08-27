@@ -1,0 +1,19 @@
+[project]
+name = "hyrox-predictor"
+version = "0.1.0"
+description = "HYROX split predictor — projects a race time and per-station breakdown from recent workout times, computed 10 different ways."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+hyrox-predictor = "hyrox_predictor.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
